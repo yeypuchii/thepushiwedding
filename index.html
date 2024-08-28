@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Wedding RSVP</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+     <script type="text/javascript">
+        var submitted = false;
+        
+        function showThankYouMessage() {
+            if (submitted) {
+                alert("Thank you for your RSVP!");
+                // Optionally, redirect to a thank-you page or reset the form
+                document.getElementById("rsvpForm").reset(); // Replace "rsvpForm" with your form's ID
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -13,7 +24,9 @@
     </header>
 
     <section>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLScQTJZXdbh6wDvE3sm1WXk5dQ-sRHK3aVS6tYYjGNMfAAtTUQ/formResponse" method="post" target="_self">
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="showThankYouMessage();"></iframe>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLScQTJZXdbh6wDvE3sm1WXk5dQ-sRHK3aVS6tYYjGNMfAAtTUQ/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;" id="rsvpForm">
+
             <label for="name">Name:</label>
             <input type="text" id="name" name="entry.1498135098" required><br>
 
